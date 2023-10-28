@@ -79,5 +79,36 @@ what's the makefile? how to use it?
 - Simplely define, it's a set of build and run command. It can help to easily run code. 
 - Creat the Makefile and define the make command.
 ```makefile
+CC=gcc
+CFLAGS=-I.
+TARGET=hello
+SRC=./01_hello_world.c
 
+all:
+	$(CC) -o $(TARGET) $(SRC)
+
+run:
+	./$(TARGET)
+
+clean:
+	rm $(TARGET)
+```
+
+- shell file
+```shell
+#!/bin/bash
+target_file="./hello"
+
+build(){
+    if [ ! -f "$target_file" ];then
+        make all
+    fi
+}
+
+install(){
+    echo "copy binary file to target path"
+}
+
+build
+install
 ```
